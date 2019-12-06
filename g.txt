@@ -1,0 +1,86 @@
+PL -> MAIN FUNLIST
+MAIN -> VT main ( ) { STL OPTRET }
+OPTRET -> return RV
+OPTRET -> nil
+RV -> id ;
+RV -> OAE ;
+RV -> ;
+FUNLIST -> FUN FUNLIST 
+FUNLIST -> nil
+FUN -> VT id ( AGL ) { STL return RV }
+VT -> NVVT 
+VT -> void
+VT -> nil
+NVVT -> int 
+NVVT -> float 
+NVVT -> double 
+NVVT -> bool
+AGL -> NVVT id MAGL 
+AGL -> nil
+MAGL -> , AGL 
+MAGL -> nil
+STL -> ST STL 
+STL -> nil
+ST -> IFST
+ST -> FORST
+ST -> WST 
+ST -> DWST
+ST -> DEC ;
+ST -> ASG ;
+IFST -> if ( OAE ) { STL } ELSE
+ELSE -> else MIF 
+ELSE -> nil
+MIF -> IFST 
+MIF -> { STL }
+FORST -> for ( DEC ; OAE ; ASG ) { STL }
+WST -> while ( OAE ) { STL }
+DWST -> do { STL } while ( OAE ) ;
+DEC -> NVVT id DEC2
+DEC2 -> nil
+DEC2 -> = DEC3
+DEC3 -> id FCAE
+DEC3 -> OAE
+FCAE -> FC
+FCAE -> AE
+ASV -> = 
+ASV -> += 
+ASV -> -= 
+ASV -> *= 
+ASV -> /=
+FC -> ( ARGL ) 
+FC -> nil
+ARGL -> id ARG 
+ARGL -> nil
+ARG -> , ARGL 
+ARG -> nil
+ASG -> id AS
+AS -> ++ 
+AS -> -- 
+AS -> = AS2
+AS2 -> id FCAE 
+AS2 -> OAE
+AS -> += id FCAE 
+AS -> *= id FCAE 
+AS -> -= id FCAE 
+AS -> /= id FCAE
+AS -> FC
+AE -> OP OAE
+AE -> nil
+OAE -> T MOAE
+MOAE -> OP MOAE2
+MOAE2 -> id AE
+MOAE2 -> nu AE
+MOAE -> nil
+OAE -> nil
+T -> id
+T -> nu
+T -> ( OAE )
+OP -> + 
+OP -> - 
+OP -> * 
+OP -> / 
+OP -> < 
+OP -> > 
+OP -> <= 
+OP -> >= 
+OP -> == 
